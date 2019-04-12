@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Room No: 115</title>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Details:</h2>
+
+<table>
+  <tr>
+    <th>NAME</th>
+    <th>GENDER</th>
+    <th>DOB</th>
+	<th>Vehicle No</th>
+	<th>Driving License No</th>
+  </tr>
+  <tr>
+    <td id="name"></td>
+    <td id="gender"></td>
+    <td id="dob"></td>
+	<td id="vehicle_no"></td>
+	<td id="dl_no"></td>
+  </tr>
+  
+</table>
+           
+           </form>
+		          <form action="index.html"> 
+           <button type="logout" value= "Logout" ">Logout
+            </button>
+           
+           </form>
+
+<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAfJqCQQFrWaoX9Nx0TCgohfgEK-sqo3Qg",
+    authDomain: "hackamu-bcc5b.firebaseapp.com",
+    databaseURL: "https://hackamu-bcc5b.firebaseio.com",
+    projectId: "hackamu-bcc5b",
+    storageBucket: "hackamu-bcc5b.appspot.com",
+    messagingSenderId: "245993406432"
+  };
+  firebase.initializeApp(config);
+  
+  var name=document.getElementById('name');
+  var gender=document.getElementById('gender');
+  var dob=document.getElementById('dob');
+  var vehicle_no=document.getElementById('vehicle_no');
+  var dl_no=document.getElementById('dl_no');
+  
+  var dbRef1=firebase.database().ref().child('8005233959/Name');
+  var dbRef2=firebase.database().ref().child('8005233959/Gender');
+  var dbRef3=firebase.database().ref().child('8005233959/DOB');
+  var dbRef4=firebase.database().ref().child('8005233959/Vehicle_no');
+  var dbRef5=firebase.database().ref().child('8005233959/DL_no');
+  dbRef1.on('value',snap=>name.innerText=snap.val());
+  dbRef2.on('value',snap=>gender.innerText=snap.val());
+  dbRef3.on('value',snap=>dob.innerText=snap.val());
+  dbRef4.on('value',snap=>vehicle_no.innerText=snap.val());
+  dbRef5.on('value',snap=>dl_no.innerText=snap.val());
+</script>
+
+</body>
+</html>
